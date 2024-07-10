@@ -1,4 +1,5 @@
-import pkg from './package.json'
+import pkg from './package.json' assert { type: 'json' }
+import { defineConfig } from 'rollup'
 import typescript from 'rollup-plugin-typescript2'
 
 const banner = `/**
@@ -7,7 +8,7 @@ const banner = `/**
 * https://github.com/timmywil/panzoom/blob/main/MIT-License.txt
 */`
 
-export default [
+export default defineConfig([
   {
     input: './src/panzoom.ts',
     plugins: [
@@ -49,4 +50,4 @@ export default [
       include: './src'
     }
   }
-]
+])

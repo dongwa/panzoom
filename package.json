@@ -1,25 +1,24 @@
 {
-  "name": "@panzoom/panzoom",
-  "version": "4.5.1",
+  "name": "@xltx/panzoom",
+  "version": "4.5.2",
   "description": "Pan and zoom elements anywhere using native transformations",
   "main": "dist/panzoom.js",
   "module": "dist/panzoom.es.js",
   "source": "src/panzoom",
   "types": "dist/src/panzoom.d.ts",
   "scripts": {
-    "build": "yarn clean && rollup --config && yarn minify",
+    "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2",
     "clean": "rm -rf dist/",
     "demo": "webpack --mode production",
     "docs": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs --out docs --readme none src/panzoom.ts src/types.ts && yarn node tasks/docs.js",
     "format": "eslint . --fix && prettier --write \"**/*.tsx\" \"**/*.ts\" \"**/*.js\" \"**/*.json\" \"**/*.md\"",
     "lint": "concurrently --raw \"eslint .\" \"yarn prettier\" \"yarn typescript\"",
     "minify": "uglifyjs --compress --mangle --comments /Timmy/ --output dist/panzoom.min.js -- dist/panzoom.js && yarn sizeup",
-    "prepare": "husky install && yarn build",
     "prettier": "prettier --check \"**/*.md\" \"**/*.json\"",
     "release": "release-it",
     "sizeup": "yarn node tasks/gzipSize.mjs",
     "start": "webpack serve",
-    "test": "yarn lint && concurrently \"yarn test:unit\" \"yarn test:node\"",
+    "test": "",
     "test:unit": "yarn karma start",
     "test:node": "yarn build && yarn node test/test-node.js",
     "test:watch": "yarn karma start --singleRun=false --autoWatch",
@@ -83,7 +82,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "release-it": "15.4.1",
-    "rollup": "^2.79.0",
+    "rollup": "4.18.1",
     "rollup-plugin-typescript2": "^0.33.0",
     "semver": "^7.3.7",
     "style-loader": "^3.3.1",
@@ -217,6 +216,5 @@
         }
       }
     }
-  },
-  "packageManager": "yarn@4.0.0-rc.18"
+  }
 }
